@@ -1,8 +1,8 @@
-# TP Final - Grupo `XX`
+# TP Final - Grupo `17`
 ### Consigna
     Consigna del TP Final
 ### Descripción
-    Descripción del proyecto
+    TP Final :')
 ### Integrantes
 - Sol Fiterman
 - Valentina Gayoso
