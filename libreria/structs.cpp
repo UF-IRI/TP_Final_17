@@ -2,55 +2,51 @@
 #include <string>
 using namespace std;
 
-struct Fecha {
+typedef struct {
    int dia;
    int mes;
    int anio;
-} typedef Fecha;
+} Fecha;
 
-struct ObraSocial { 
-    string id_od;
-    string obra_social;
-} typedef ObraSocial;
-
-struct ObraSocial { 
+typedef struct { 
     string id_obs; // el que es un numero
     string obra_social; // el que es palabra
-} typedef ObraSocial;
+} ObraSocial;
 
-struct Medico {
+typedef struct{
     string matricula;
     string nombre;
     string apellido;
     string telefono;
     string especialidad;
     bool activo;
-} typedef Medico;
+} Medico;
 
-struct Consultas {
+typedef struct {
     string DNI;
     Fecha fecha_solicitado;
     Fecha fecha_turno;
     bool presento;
-    string matricula_med;
-} typedef Consultas;
+    Medico medico; //conectado a traves de matricula 
+} Consultas;
 
-struct Contacto{
+typedef struct{
     int DNI;
     string telefono;
     string celular;
     string direccion;
     string mail;
-} typedef Contacto;
+} Contacto;
 
-struct Paciente {
+typedef struct {
     string DNI;
     string nombre;
     string apellido;
     string sexo;
-    Fecha natalicio;
+    string natalicio;
     string estado;
-    ObraSocial id_os;  //ver si poner string o la estructura esta, ¿¿hace falta leer el numero??
-} typedef Paciente;
-
+    ObraSocial id_os;  //ver si poner solo el string o toda la estructura esta, ¿¿hace falta leer el numero??, no aporta info
+    Contacto contacto;
+    Consultas UltimaConsulta; //ver como hacer para incluir todas --> Un array??
+} Paciente;
 
