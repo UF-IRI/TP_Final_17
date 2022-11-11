@@ -51,25 +51,25 @@ int main() {
     
     string dummy;
     char coma;
-    pac << dummy << coma << dummy << coma << dummy << coma << dummy << coma << dummy << coma
-    << dummy << coma << dummy; //leo el header de Pacientes.csv
+    pac >> dummy >> coma >> dummy >> coma >> dummy >> coma >> dummy >> coma >> dummy >> coma
+    >> dummy >> coma >> dummy; //leo el header de Pacientes.csv
 
     while(pac){
         if(i==*N-1){
                 resize(Paciente *&array, *N, cantidad_aumentar); 
         }
         
-        pac << *array[i].DNI << coma << *array[i].nombre << coma << *array[i].apellido << coma 
-        << *array[i].sexo << coma << *array[i].natalicio << coma << *array[i].estado << coma << *array[i].id_os.obra_social;
+        pac >> *array[i].DNI >> coma >> *array[i].nombre >> coma >> *array[i].apellido >> coma 
+        >> *array[i].sexo >> coma >> *array[i].natalicio >> coma >> *array[i].estado >> coma >> *array[i].id_os.obra_social;
         i++;
     }  //lee todo el archivo de paciente y lo guarda en el array dinamico
 
 
     string aux, aux2, aux3, aux4;
-    obs << dummy << coma << dummy; //leo el header de IRI_ObraSocial.csv
+    obs >> dummy >> coma >> dummy; //leo el header de IRI_ObraSocial.csv
     
     while(obs){
-        obs << dummy << coma << aux; 
+        obs >> dummy >> coma >> aux; 
         if(*array[i].id_os.id_obs == dummy) //si son la misma obra social (adaptado a que en la lista de pac tiene el numero, no el string)
         {
                 *array[i].id_os.obra_social=aux;
@@ -78,10 +78,10 @@ int main() {
     } //lee todo el archivo de obra social y lo guarda en el array dinamico
     
 
-    cont << dummy << coma << dummy << coma << dummy << coma << dummy << coma << dummy; //leo el header de IRI_Contactos.csv
+    cont >> dummy >> coma >> dummy >> coma >> dummy >> coma >> dummy >> coma >> dummy; //leo el header de IRI_Contactos.csv
 
     while(cont){
-        cont << dummy << coma << aux << aux2 << coma << aux3 << coma << aux4; 
+        cont >> dummy >> coma >> aux >> aux2 >> coma >> aux3 >> coma >> aux4; 
         if(*array[i].DNI == dummy) //si son la misma obra social
         {
                 *array[i].contacto.telefono = aux;
