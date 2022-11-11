@@ -6,7 +6,6 @@ namespace Casos_Base::tests {
 		//declaro 2 arrays el de aca y el que testeo 
      
 		Paciente array[3];
-		int cant_aumentar = 1;
 
         array[0].DNI = "878091772";
         array[0].nombre = "Dagmar";
@@ -32,7 +31,8 @@ namespace Casos_Base::tests {
         array[2].estado = "n/c";
         array[2].id_os = "OSDE";
 
-
+        int cant_aumentar = 1;
+       
 		
 
 	}

@@ -16,7 +16,8 @@ using namespace std;
         //Mover a las listas nuevas; Archivo, Vuelve/Activo, Contactar devuelta, Faltan datos, con mem dinamica!!, son archivos CSV
         //Algoritmo BUSQUEDA
         //Unit-Test
-        //Borrar todas las mem dinamicas!!! N, j, k, l, array, 
+        //Borrar todas las mem dinamicas!!! N, j, k, l, array, ArrContacto
+        //USAR REGGEX
 
 //Variables mem estatica: i, aux, aux2, aux3, aux4, dummy, coma, 
 
@@ -39,7 +40,7 @@ int main() {
      if (!(pac.is_open()))
             return -1;
 
-   
+    srand(time(NULL));
     int N=20;
     int i = 0;
     int cantidad_aumentar = 5;
@@ -53,7 +54,7 @@ int main() {
 
     while(pac){
         if(i==N-1){
-                resize(array, &N, cantidad_aumentar); 
+                resize(array, N, cantidad_aumentar); 
         }
         
         pac >> array[i].DNI >> coma >> array[i].nombre >> coma >> array[i].apellido >> coma 
