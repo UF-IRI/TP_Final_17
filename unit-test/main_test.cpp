@@ -1,6 +1,6 @@
 #include "gmock/gmock.h"
 
-namespace foobar::tests {
+namespace foobar {
 	TEST(ExampleTests, Example) {
         ASSERT_THAT(1, 1);
 	}

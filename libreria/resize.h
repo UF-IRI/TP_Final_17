@@ -5,6 +5,6 @@
 #include "structs.h"
 using namespace std;
 
-void resize(Paciente *array, int &N, int cantidad_aumentar); 
+void resize(Paciente *&array, int &N, int cantidad_aumentar); 
 
 #endif

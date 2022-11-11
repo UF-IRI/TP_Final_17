@@ -3,6 +3,8 @@
 #include <ctime>
 #include "resize.h"
 #include "contactar.h"
+#include "iri.cpp"
+
 using namespace std;
 
 //FALTA: 
@@ -19,7 +21,7 @@ using namespace std;
 int main() {
     fstream cons,cont,med,pac;
 
-    cons.open(BASE_PATH+"IRI_Consultas.csv", ios::in);
+    cons.open(BASE_PATH+"\\data_files\\input\\IRI_Consultas.csv", ios::in);
      if (!(cons.is_open()))
             return -1;
 

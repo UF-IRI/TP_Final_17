@@ -1,7 +1,7 @@
 #include "gmock/gmock.h"
-#include "structs.h"
+#include "resize.h"
 
-namespace Casos_Base::tests {
+namespace Casos_Base {
 	TEST(Casos_Base, resize) {
 		//declaro 2 arrays el de aca y el que testeo 
      
@@ -31,10 +31,25 @@ namespace Casos_Base::tests {
         array[2].estado = "n/c";
         array[2].id_os = "OSDE";
 
-        int cant_aumentar = 1;
-       
-		
+        int N = 0;
+        Paciente* test= new Paciente[N];
+        
+        resize(test, N, 1);
+        
+        test[0].DNI = "878091772";
+        test[0].nombre = "Dagmar";
+        test[0].apellido = "Benedict";
+        test[0].sexo = "F";
+        test[0].natalicio = "1/2/1959";
+        test[0].estado = "fallecido";
+        test[0].id_os = "Italiano";
 
+        EXPECT_EQ(array[0].sexo, test[0].sexo);    
+
+        //for(int i = 0; i < 3; i++){
+        //   EXPECT_EQ(array[i].sexo, );
+        //}
+		
 	}
 
 	TEST(Casos_Base, Test_Caso2) {

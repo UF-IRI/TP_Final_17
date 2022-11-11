@@ -1,6 +1,6 @@
 #include "resize.h"
 
-void resize(Paciente *array, int &N, int cantidad_aumentar) 
+void resize(Paciente *&array, int &N, int cantidad_aumentar) 
 {
     N = N + cantidad_aumentar;
 	int i = 0;
