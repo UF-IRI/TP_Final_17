@@ -1,4 +1,5 @@
-#include <iostream>
+#ifndef STRUCTS_H
+#define STRUCTS_H
 #include <string>
 using namespace std;
 
@@ -50,3 +51,4 @@ typedef struct {
     Consultas UltimaConsulta; //ver como hacer para incluir todas --> Un array??
 } Paciente;
 
+#endif
