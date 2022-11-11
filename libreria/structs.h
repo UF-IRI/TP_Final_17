@@ -1,6 +1,7 @@
 #ifndef STRUCTS_H
 #define STRUCTS_H
 #include <string>
+#include <ctime>
 using namespace std;
 
 typedef struct {
@@ -26,7 +27,7 @@ typedef struct{
 typedef struct {
     string DNI;
     Fecha fecha_solicitado;
-    Fecha fecha_turno;
+    time_t fecha_turno;
     bool presento;
     Medico medico; //conectado a traves de matricula 
 } Consultas;
@@ -46,9 +47,10 @@ typedef struct {
     string sexo;
     string natalicio;
     string estado;
-    ObraSocial id_os;  //ver si poner solo el string o toda la estructura esta, ¿¿hace falta leer el numero??, no aporta info
+    string id_os;  //ver si poner solo el string o toda la estructura esta, ¿¿hace falta leer el numero??, no aporta info
     Contacto contacto;
     Consultas UltimaConsulta; //ver como hacer para incluir todas --> Un array??
+    string archivado;
 } Paciente;
 
 #endif
