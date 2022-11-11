@@ -5,6 +5,19 @@
 #include <ctime>
 using namespace std;
 
+//FALTA: 
+        //Funcion update --> preguntar como
+        //Funcion Archivar!!
+        //Terminar de leer los archivos de obra social, consultas y medicos
+        //Excepciones (no hay contacto, etc.)!
+        //Que anden las structs :/ (esto saca todos los errores que aparecen)
+        //Mover a las listas nuevas; Archivo, Vuelve/Activo, Contactar devuelta, Faltan datos, con mem dinamica!!, son archivos CSV
+        //Algoritmo BUSQUEDA
+        //Unit-Test
+        //Borrar todas las mem dinamicas!!! N, j, k, l, array, 
+
+//Variables mem estatica: i, aux, aux2, aux3, aux4, dummy, coma, 
+
 int main() {
     fstream cons,cont,med,obs,pac;
    
@@ -29,10 +42,12 @@ int main() {
             return -1;
 
    
-    int N = 20;
+    int *N = new int;
+    *N=20;
     int i = 0;
-
-     Paciente *array = new Paciente[N]; //tener en cuenta que hay que hacer resize
+    int cantidad_aumentar = 5;
+    
+    Paciente *array = new Paciente[N]; //tener en cuenta que hay que hacer resize
     
     string dummy;
     char coma;
@@ -40,6 +55,10 @@ int main() {
     << dummy << coma << dummy; //leo el header de Pacientes.csv
 
     while(pac){
+        if(i==*N-1){
+                resize(Paciente *&array, *N, cantidad_aumentar); 
+        }
+        
         pac << *array[i].DNI << coma << *array[i].nombre << coma << *array[i].apellido << coma 
         << *array[i].sexo << coma << *array[i].natalicio << coma << *array[i].estado << coma << *array[i].id_os.obra_social;
         i++;
@@ -51,9 +70,9 @@ int main() {
     
     while(obs){
         obs << dummy << coma << aux; 
-        if(*array[i].id_os.obra_social == dummy) //si son la misma obra social
+        if(*array[i].id_os.id_obs == dummy) //si son la misma obra social (adaptado a que en la lista de pac tiene el numero, no el string)
         {
-                *array[i].id_os.id_obs=aux;
+                *array[i].id_os.obra_social=aux;
         }
         i++;
     } //lee todo el archivo de obra social y lo guarda en el array dinamico
@@ -82,6 +101,51 @@ int main() {
     obs.close();
     pac.close();
 
-    //seguimos con el codigo
+    for(i=0; i<*N; i++){
+       
+       //hacer el calculo de los 10 años
+
+        if(array[i].estado == "fallecido"){//|| //dif tiempo > 10
+        
+               i=3; //archivar (el i=3 esta de decoracion para que no aparezca un error)
+        }
+
+        else if(array[i].estado == "internado"){ // || tiene turno a futuro
+        
+            i=3;    //mover a activo y retornar (idem)
+        }
+
+        else{ //los que tenemos que contactar
+                int *j = new int; //para las listas nuevas
+                int *k = new int;
+                int *l = new int;
+
+                int answer = Contactar();
+                switch(answer){
+                        case 1:  //muerto
+                                //update, movemos al archivo
+                                break;
+
+                        case 2: //no quiere volver
+                                //update, movemos al archivo
+                                break;
+                        
+                        case 3: //quiere volver
+                                //update, movemos al activo
+                                break;
+                        
+                        case 4: //not found
+                                //movemos a no encontrados
+                                break;
+
+                        default:
+                                cout<<"ERROR"<<endl;
+                                break;
+                }
+        }
+    } //busqueda
+
+    //cerrar y borrar todo!
+
     return EXIT_SUCCESS;
 }

@@ -1,6 +1,6 @@
 ## >>>>>>>>>>>>>>>
 ## >>>>>>>>>>>>>>>
-add_library(libreria dummy.cpp contactar.h contactar.cpp structs.cpp)
+add_library(libreria dummy.cpp contactar.h contactar.cpp structs.cpp resize.h resize.cpp)
 ## <<<<<<<<<<<<<<<
 ## <<<<<<<<<<<<<<<
 
