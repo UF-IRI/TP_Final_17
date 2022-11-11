@@ -105,12 +105,12 @@ int main() {
        
        //hacer el calculo de los 10 años
 
-        if(array[i].estado == "fallecido"){//|| //dif tiempo > 10
+        if(*array[i].estado == "fallecido"){//|| //dif tiempo > 10
         
                i=3; //archivar (el i=3 esta de decoracion para que no aparezca un error)
         }
 
-        else if(array[i].estado == "internado"){ // || tiene turno a futuro
+        else if(*array[i].estado == "internado"){ // || tiene turno a futuro
         
             i=3;    //mover a activo y retornar (idem)
         }
