@@ -60,6 +60,8 @@ int main() {
 
     i=0;
     while(cont){//falta resize
+        if(i==N-1)
+                resizeCont(ArrContacto, N, cantidad_aumentar); 
         cont >> ArrContacto[i].DNI >> coma >> ArrContacto[i].telefono >> coma >> ArrContacto[i].celular >> coma >> ArrContacto[i].direccion >> coma >> ArrContacto[i].mail;
         i++;
     }
@@ -69,6 +71,8 @@ int main() {
 
     i=0;
     while(cons){//falta resize
+         if(i==N-1)
+                resizeCons(ArrConsultas, N, cantidad_aumentar); 
         cons >> ArrConsultas[i].DNI >> coma >> ArrConsultas[i].fecha_solicitado >> coma >> ArrConsultas[i].fecha_turno >> coma >> ArrConsultas[i].presento >> coma >> ArrConsultas[i].medico.matricula;
         i++;
     }

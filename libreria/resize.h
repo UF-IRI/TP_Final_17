@@ -6,5 +6,7 @@
 using namespace std;
 
 void resize(Paciente *&array, int &N, int cantidad_aumentar); 
+void resizeCont(Contacto *&array, int &N, int cantidad_aumentar); 
+void resizeCons(Consultas *&array, int &N, int cantidad_aumentar); 
 
 #endif

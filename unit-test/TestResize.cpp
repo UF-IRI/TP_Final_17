@@ -11,7 +11,7 @@ namespace Casos_Base {
         array[0].nombre = "Dagmar";
         array[0].apellido = "Benedict";
         array[0].sexo = "F";
-        array[0].natalicio = "1/2/1959";
+        array[0].natalicio = 1/2/1959;
         array[0].estado = "fallecido";
         array[0].id_os = "Italiano";
 
@@ -19,7 +19,7 @@ namespace Casos_Base {
         array[1].nombre = "Freeman";
         array[1].apellido = "Willbond";
         array[1].sexo = "M";
-        array[1].natalicio = "9/22/2010";
+        array[1].natalicio = 9/22/2010;
         array[1].estado = "internado";
         array[1].id_os = "Espanyol";
 
@@ -27,7 +27,7 @@ namespace Casos_Base {
         array[2].nombre = "Laurene";
         array[2].apellido = "Rumsey";
         array[2].sexo = "F";
-        array[2].natalicio = "2/27/1951";
+        array[2].natalicio = 2/27/1951;
         array[2].estado = "n/c";
         array[2].id_os = "OSDE";
 
@@ -40,7 +40,7 @@ namespace Casos_Base {
         test[0].nombre = "Dagmar";
         test[0].apellido = "Benedict";
         test[0].sexo = "F";
-        test[0].natalicio = "1/2/1959";
+        test[0].natalicio = 1/2/1959;
         test[0].estado = "fallecido";
         test[0].id_os = "Italiano";
 
@@ -48,7 +48,7 @@ namespace Casos_Base {
         test[1].nombre = "Freeman";
         test[1].apellido = "Willbond";
         test[1].sexo = "M";
-        test[1].natalicio = "9/22/2010";
+        test[1].natalicio = 9/22/2010;
         test[1].estado = "internado";
         test[1].id_os = "Espanyol";
 
@@ -56,7 +56,7 @@ namespace Casos_Base {
         test[2].nombre = "Laurene";
         test[2].apellido = "Rumsey";
         test[2].sexo = "F";
-        test[2].natalicio = "2/27/1951";
+        test[2].natalicio = 2/27/1951;
         test[2].estado = "n/c";
         test[2].id_os = "OSDE";   
 
