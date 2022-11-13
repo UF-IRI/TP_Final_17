@@ -25,15 +25,15 @@ int main() {
      if (!(cons.is_open()))
             return -1;
 
-    cont.open(BASE_PATH+"IRI_Contactos.csv", ios::in);
+    cont.open(BASE_PATH+"\\data_files\\input\\IRI_Contactos.csv", ios::in);
      if (!(cont.is_open()))
             return -1;
 
-    med.open(BASE_PATH+"IRI_Medicos.csv", ios::in);
+    med.open(BASE_PATH+"\\data_files\\input\\IRI_Medicos.csv", ios::in);
      if (!(med.is_open()))
             return -1;
 
-    pac.open(BASE_PATH+"Pacientes.csv", ios::in);
+    pac.open(BASE_PATH+"\\data_files\\input\\Pacientes.csv", ios::in);
      if (!(pac.is_open()))
             return -1;
 
