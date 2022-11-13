@@ -10,11 +10,9 @@ using namespace std;
 //FALTA: 
         //Funcion update --> solo obra social
         //Funcion Archivar!! --> agregar etiqueta
-        //Funcion update --> preguntar como
-        //Funcion Archivar!!
-        //Terminar de leer los archivos de obra social, consultas y medicos
+        //Terminar de leer los archivos de consultas y medicos y armar la lista gral!
         //Excepciones (no hay contacto, etc.)!
-        //Que anden las structs :/ (esto saca todos los errores que aparecen)
+        //Borrar variablem mem dinamica: array, ArrContacto, ArrConsultas, 
 
 //Variables mem estatica: i, aux, aux2, aux3, aux4, dummy, coma, 
 
