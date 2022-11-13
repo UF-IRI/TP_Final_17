@@ -4,12 +4,6 @@
 #include <ctime>
 using namespace std;
 
-typedef struct {
-   int dia;
-   int mes;
-   int anio;
-} Fecha;
-
 typedef struct { 
     string id_obs; // el que es un numero
     string obra_social; // el que es palabra
@@ -26,7 +20,7 @@ typedef struct{
 
 typedef struct {
     string DNI;
-    Fecha fecha_solicitado;
+    time_t fecha_solicitado;
     time_t fecha_turno;
     bool presento;
     Medico medico; //conectado a traves de matricula 
@@ -45,9 +39,9 @@ typedef struct {
     string nombre;
     string apellido;
     string sexo;
-    string natalicio;
+    time_t natalicio;
     string estado;
-    string id_os;  //ver si poner solo el string o toda la estructura esta, ¿¿hace falta leer el numero??, no aporta info
+    string id_os; //ver si poner solo el string o toda la estructura esta, ¿¿hace falta leer el numero??, no aporta info
     Contacto contacto;
     Consultas UltimaConsulta; //ver como hacer para incluir todas --> Un array??
     string archivado;

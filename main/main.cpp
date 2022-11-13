@@ -58,10 +58,18 @@ int main() {
     Contacto *ArrContacto = new Contacto[N];
     cont >> dummy >> coma >> dummy >> coma >> dummy >> coma >> dummy >> coma >> dummy; //leo el header de IRI_Contactos.csv
 
-    while(cont){
-         if(i==N-1)
-                resize(ArrContacto, N, cantidad_aumentar); 
+    i=0;
+    while(cont){//falta resize
         cont >> ArrContacto[i].DNI >> coma >> ArrContacto[i].telefono >> coma >> ArrContacto[i].celular >> coma >> ArrContacto[i].direccion >> coma >> ArrContacto[i].mail;
+        i++;
+    }
+
+    Consultas *ArrConsultas = new Consultas[N];
+    cons >> dummy >> coma >> dummy >> coma >> dummy >> coma >> dummy >> coma >> dummy; //leo el header de IRI_Contactos.csv
+
+    i=0;
+    while(cons){//falta resize
+        cons >> ArrConsultas[i].DNI >> coma >> ArrConsultas[i].fecha_solicitado >> coma >> ArrConsultas[i].fecha_turno >> coma >> ArrConsultas[i].presento >> coma >> ArrConsultas[i].medico.matricula;
         i++;
     }
 
@@ -106,4 +114,9 @@ int main() {
                 }
         }
     }
+
+
+
+
+        
 }
