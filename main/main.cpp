@@ -59,6 +59,8 @@ int main() {
     cont >> dummy >> coma >> dummy >> coma >> dummy >> coma >> dummy >> coma >> dummy; //leo el header de IRI_Contactos.csv
 
     while(cont){
+         if(i==N-1)
+                resize(ArrContacto, N, cantidad_aumentar); 
         cont >> ArrContacto[i].DNI >> coma >> ArrContacto[i].telefono >> coma >> ArrContacto[i].celular >> coma >> ArrContacto[i].direccion >> coma >> ArrContacto[i].mail;
         i++;
     }

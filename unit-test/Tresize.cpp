@@ -2,7 +2,7 @@
 #include "resize.h"
 
 namespace Casos_Base {
-	TEST(Casos_Base, resize) {
+	TEST(Casos_Base, FuncionResize) {
 		//declaro 2 arrays el de aca y el que testeo 
      
 		Paciente array[3];
@@ -34,7 +34,7 @@ namespace Casos_Base {
         int N = 0;
         Paciente* test= new Paciente[N];
         
-        resize(test, N, 1);
+        resize(test, N, 2);
         
         test[0].DNI = "878091772";
         test[0].nombre = "Dagmar";
@@ -44,11 +44,30 @@ namespace Casos_Base {
         test[0].estado = "fallecido";
         test[0].id_os = "Italiano";
 
-        EXPECT_EQ(array[0].sexo, test[0].sexo);    
+        test[1].DNI = "873726724";
+        test[1].nombre = "Freeman";
+        test[1].apellido = "Willbond";
+        test[1].sexo = "M";
+        test[1].natalicio = "9/22/2010";
+        test[1].estado = "internado";
+        test[1].id_os = "Espanyol";
 
-        //for(int i = 0; i < 3; i++){
-        //   EXPECT_EQ(array[i].sexo, );
-        //}
+        test[2].DNI = "269125060";
+        test[2].nombre = "Laurene";
+        test[2].apellido = "Rumsey";
+        test[2].sexo = "F";
+        test[2].natalicio = "2/27/1951";
+        test[2].estado = "n/c";
+        test[2].id_os = "OSDE";   
+
+        for(int i = 0; i < 3; i++){
+            EXPECT_EQ(array[i].nombre, test[i].nombre);    
+            EXPECT_EQ(array[i].apellido, test[i].apellido);    
+            EXPECT_EQ(array[i].sexo, test[i].sexo);    
+            EXPECT_EQ(array[i].natalicio, test[i].natalicio);    
+            EXPECT_EQ(array[i].estado, test[i].estado);    
+            EXPECT_EQ(array[i].id_os, test[i].id_os);    
+        }
 		
 	}
 
