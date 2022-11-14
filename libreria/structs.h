@@ -27,7 +27,7 @@ typedef struct {
 } Consultas;
 
 typedef struct{
-    int DNI;
+    string DNI;
     string telefono;
     string celular;
     string direccion;
