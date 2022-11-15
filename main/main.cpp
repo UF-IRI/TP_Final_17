@@ -4,6 +4,7 @@
 #include "resize.h"
 #include "contactar.h"
 #include "copiarPacCont.h"
+#include "copiarPacCons.h"
 #include "iri.cpp"
 
 using namespace std;
@@ -24,7 +25,7 @@ int main() {
     cons.open(BASE_PATH+"TP_FINAL_17/data_files/input/IRI_Consultas.csv", ios::in);
      if (!(cons.is_open()))
             return -1;
-
+     
     cont.open(BASE_PATH+"TP_FINAL_17/data_files/input/IRI_Contactos.csv", ios::in);
      if (!(cont.is_open()))
             return -1;
@@ -96,7 +97,7 @@ int main() {
     int k;
     k=N;
     int j=0;
-    time_t max;
+    
 
     for (i=0 ;i<N ;i++){ //recorre pacientes
         for(j=0; j<k ;j++){ //recorre las otras listas
@@ -106,6 +107,7 @@ int main() {
                 }
 
                 if(array[i].DNI == ArrConsultas[j].DNI){
+                    copiarPacCons(array, i, ArrConsultas, j);
                         
                 }
 
