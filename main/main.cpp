@@ -5,6 +5,7 @@
 #include "contactar.h"
 #include "copiarPacCont.h"
 #include "copiarPacCons.h"
+#include "copiarConsMed.h"
 #include "iri.cpp"
 
 using namespace std;
@@ -97,6 +98,18 @@ int main() {
     int k;
     k=N;
     int j=0;
+
+    for (i = 0; i < N; i++) { //recorre Consulta
+        for (j = 0; j < k; j++) { //recorre medicos
+            if (ArrConsultas[i].medico.matricula == ArrMed[j].matricula) 
+            {
+                copiarConsMed(ArrConsultas, i, ArrMed, j);
+
+            }
+
+
+        }
+
     
 
     for (i=0 ;i<N ;i++){ //recorre pacientes
