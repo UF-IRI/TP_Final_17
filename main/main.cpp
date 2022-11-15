@@ -17,23 +17,26 @@ using namespace std;
 //Variables mem estatica: i, aux, aux2, aux3, aux4, dummy, coma, 
 
 int main() {
+
     fstream cons,cont,med,pac;
 
-    cons.open(BASE_PATH+"\\data_files\\input\\IRI_Consultas.csv", ios::in);
+    cons.open(BASE_PATH+"TP_FINAL_17/data_files/input/IRI_Consultas.csv", ios::in);
      if (!(cons.is_open()))
             return -1;
 
-    cont.open(BASE_PATH+"\\data_files\\input\\IRI_Contactos.csv", ios::in);
+    cont.open(BASE_PATH+"TP_FINAL_17/data_files/input/IRI_Contactos.csv", ios::in);
      if (!(cont.is_open()))
             return -1;
 
-    med.open(BASE_PATH+"\\data_files\\input\\IRI_Medicos.csv", ios::in);
+    med.open(BASE_PATH+"TP_FINAL_17/data_files/input/IRI_Medicos.csv", ios::in);
      if (!(med.is_open()))
             return -1;
 
-    pac.open(BASE_PATH+"\\data_files\\input\\Pacientes.csv", ios::in);
+    pac.open(BASE_PATH+"TP_FINAL_17/data_files/input/IRI_Pacientes.csv", ios::in);
      if (!(pac.is_open()))
             return -1;
+
+
 
     int N=20;
     int i = 0;
@@ -91,10 +94,7 @@ int main() {
     pac.close();
 
 
-    
     //armamos el array con todos los datos
-
-
 
 
 
@@ -103,11 +103,11 @@ int main() {
         //hacer el calculo de los 10 años
 
         if(array[i].estado == "fallecido"){//|| //dif tiempo > 10
-         i=3; //archivar (el i=3 esta de decoracion para que no aparezca un error)
+          //archivar 
         }
 
         else if(array[i].estado == "internado"){ // || tiene turno a futuro
-          i=3;    //mover a activo y retornar (idem)
+             //mover a activo y retornar (idem)
         }
 
         else{ //los que tenemos que contactar
