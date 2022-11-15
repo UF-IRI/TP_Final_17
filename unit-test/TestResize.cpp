@@ -181,5 +181,68 @@ namespace Casos_Base {
 
 	
 	}
+
+    TEST(Casos_Base, ResizeMedicos) {
+       
+        Medico array[3];
+
+        array[0].matricula = "04-723-0907";
+        array[0].nombre = "Araldo";
+        array[0].apellido = "Grafom";
+        array[0].telefono = "827-190-3137";
+        array[0].especialidad = "farmacologia";
+        array[0].activo = true;
+
+        array[1].matricula = "50-314-2346";
+        array[1].nombre = "Trevar";
+        array[1].apellido = "Cess";
+        array[1].telefono = "600-230-3473";
+        array[1].especialidad = "oncologia";
+        array[1].activo = true;
+        
+        array[2].matricula = "61-294-6573";
+        array[2].nombre = "Patin";
+        array[2].apellido = "Itzchaky";
+        array[2].telefono = "113-697-7977";
+        array[2].especialidad = "reumatologia";
+        array[2].activo = false;
+
+
+        int N = 0;
+        Medico *test= new Medico[N];
+        
+        resizeMed(test, N, 2);
+
+        test[0].matricula = "04-723-0907";
+        test[0].nombre = "Araldo";
+        test[0].apellido = "Grafom";
+        test[0].telefono = "827-190-3137";
+        test[0].especialidad = "farmacologia";
+        test[0].activo = true;
+
+        test[1].matricula = "50-314-2346";
+        test[1].nombre = "Trevar";
+        test[1].apellido = "Cess";
+        test[1].telefono = "600-230-3473";
+        test[1].especialidad = "oncologia";
+        test[1].activo = true;
+        
+        test[2].matricula = "61-294-6573";
+        test[2].nombre = "Patin";
+        test[2].apellido = "Itzchaky";
+        test[2].telefono = "113-697-7977";
+        test[2].especialidad = "reumatologia";
+        test[2].activo = false;
+
+        for(int i = 0; i < 3; i++){
+            EXPECT_EQ(array[i].matricula, test[i].matricula);    
+            EXPECT_EQ(array[i].nombre, test[i].nombre);    
+            EXPECT_EQ(array[i].apellido, test[i].apellido); 
+            EXPECT_EQ(array[i].telefono, test[i].telefono);    
+            EXPECT_EQ(array[i].especialidad, test[i].especialidad);    
+            EXPECT_EQ(array[i].activo, test[i].activo);        
+        }
+	
+	}
 }
 

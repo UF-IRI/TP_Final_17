@@ -38,13 +38,12 @@ int main() {
     int N=20;
     int i = 0;
     int cantidad_aumentar = 5;
-
-    Paciente *array = new Paciente[N];
-
     string dummy;
     string coma;
-    pac >> dummy >> coma >> dummy; //leo el header de Pacientes.csv
+    
 
+    Paciente *array = new Paciente[N];
+    pac >> dummy >> coma >> dummy; //leo el header de Pacientes.csv
 
     while(pac){
         if(i==N-1)
@@ -57,7 +56,7 @@ int main() {
     cont >> dummy >> coma >> dummy >> coma >> dummy >> coma >> dummy >> coma >> dummy; //leo el header de IRI_Contactos.csv
 
     i=0;
-    while(cont){//falta resize
+    while(cont){
         if(i==N-1)
                 resizeCont(ArrContacto, N, cantidad_aumentar); 
         cont >> ArrContacto[i].DNI >> coma >> ArrContacto[i].telefono >> coma >> ArrContacto[i].celular >> coma >> ArrContacto[i].direccion >> coma >> ArrContacto[i].mail;
@@ -65,13 +64,24 @@ int main() {
     }
 
     Consultas *ArrConsultas = new Consultas[N];
-    cons >> dummy >> coma >> dummy >> coma >> dummy >> coma >> dummy >> coma >> dummy; //leo el header de IRI_Contactos.csv
+    cons >> dummy >> coma >> dummy >> coma >> dummy >> coma >> dummy >> coma >> dummy; //leo el header de IRI_Consultas.csv
 
     i=0;
-    while(cons){//falta resize
+    while(cons){
          if(i==N-1)
                 resizeCons(ArrConsultas, N, cantidad_aumentar); 
         cons >> ArrConsultas[i].DNI >> coma >> ArrConsultas[i].fecha_solicitado >> coma >> ArrConsultas[i].fecha_turno >> coma >> ArrConsultas[i].presento >> coma >> ArrConsultas[i].medico.matricula;
+        i++;
+    }
+    
+    Medico *ArrMed = new Medico[N];
+    med >> dummy >> coma >> dummy >> coma >> dummy >> coma >> dummy >> coma >> dummy >> coma >> dummy; //leo el header de IRI_Medicos.csv
+
+    i=0;
+    while(med){//falta resize
+        if(i==N-1)
+                resizeMed(ArrMed, N, cantidad_aumentar); 
+        med >> ArrMed[i].matricula >> coma >> ArrMed[i].nombre >> coma >> ArrMed[i].apellido >> coma >> ArrMed[i].telefono >> coma >> ArrMed[i].especialidad >> coma >>  ArrMed[i].activo;
         i++;
     }
 
@@ -79,6 +89,15 @@ int main() {
     cont.close();
     med.close();
     pac.close();
+
+
+    
+    //armamos el array con todos los datos
+
+
+
+
+
 
     for(i=0; i<N; i++){
         //hacer el calculo de los 10 años
