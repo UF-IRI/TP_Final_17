@@ -3,6 +3,7 @@
 #include <ctime>
 #include "resize.h"
 #include "contactar.h"
+#include "copiarPacCont.h"
 #include "iri.cpp"
 
 using namespace std;
@@ -37,7 +38,6 @@ int main() {
             return -1;
 
 
-
     int N=20;
     int i = 0;
     int cantidad_aumentar = 5;
@@ -46,7 +46,7 @@ int main() {
     
 
     Paciente *array = new Paciente[N];
-    pac >> dummy >> coma >> dummy; //leo el header de Pacientes.csv
+    pac >> dummy >> coma >> dummy >> coma >> dummy >> coma >> dummy >> coma >> dummy >> coma >> dummy >> coma >> dummy; //leo el header de Pacientes.csv
 
     while(pac){
         if(i==N-1)
@@ -93,20 +93,56 @@ int main() {
     med.close();
     pac.close();
 
+    int k;
+    k=N;
+    int j=0;
+    time_t max;
+
+    for (i=0 ;i<N ;i++){ //recorre pacientes
+        for(j=0; j<k ;j++){ //recorre las otras listas
+                if(array[i].DNI == ArrContacto[j].DNI){
+                      copiarPacCont(array,i, ArrContacto,j);  
+
+                }
+
+                if(array[i].DNI == ArrConsultas[j].DNI){
+                        
+                }
+
+
+
+
+        }
+
+
+    }
+
+
 
     //armamos el array con todos los datos
 
-
-
+  //hacer el calculo de los 10 años
+  
+  k=20;
+  j=0;
+  Paciente *archivados = new Paciente[k];
 
     for(i=0; i<N; i++){
-        //hacer el calculo de los 10 años
+      
 
-        if(array[i].estado == "fallecido"){//|| //dif tiempo > 10
-          //archivar 
+        if(array[i].estado == "fallecido" || array[i].archivado == "archivado" ){//|| //dif tiempo > 10
+          //archivar
+              archivados[j].DNI = array[j].DNI;
+              //repetir p todos los datos
+              j++;
+
+                
+
         }
+        
 
-        else if(array[i].estado == "internado"){ // || tiene turno a futuro
+        else if(array[i].estado == "internado"){ 
+        // || tiene turno a futuro
              //mover a activo y retornar (idem)
         }
 
