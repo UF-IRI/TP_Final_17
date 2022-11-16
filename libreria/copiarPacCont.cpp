@@ -6,6 +6,7 @@
     array[i].contacto.celular = ArrContacto[j].celular;
     array[i].contacto.direccion = ArrContacto[j].direccion;
     array[i].contacto.mail = ArrContacto[j].mail;
+
     return;
 
  }
