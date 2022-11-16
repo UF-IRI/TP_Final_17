@@ -16,6 +16,8 @@ void copiarPacCons(Paciente*& array, int i, Consultas*& ArrConsultas, int j)
       array[i].UltimaConsulta.medico.matricula = ArrConsultas[j].medico.matricula;
       array[i].UltimaConsulta.medico.telefono = ArrConsultas[j].medico.telefono;
 
+      max = ArrConsultas[j].fecha_turno;
+
     }
     
     return;

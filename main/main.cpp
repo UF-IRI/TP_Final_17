@@ -1,12 +1,14 @@
 #include <string>
 #include <fstream>
 #include <ctime>
+#include "iri.cpp"
 #include "resize.h"
 #include "contactar.h"
 #include "copiarPacCont.h"
 #include "copiarPacCons.h"
 #include "copiarConsMed.h"
-#include "iri.cpp"
+#include "archivar.h"
+
 
 using namespace std;
 
@@ -40,22 +42,24 @@ int main() {
             return -1;
 
 
+    
+    string dummy;
+    string coma;
     int N=20;
     int i = 0;
     int cantidad_aumentar = 5;
-    string dummy;
-    string coma;
-    
 
     Paciente *array = new Paciente[N];
     pac >> dummy >> coma >> dummy >> coma >> dummy >> coma >> dummy >> coma >> dummy >> coma >> dummy >> coma >> dummy; //leo el header de Pacientes.csv
 
     while(pac){
-        if(i==N-1)
+        if(i==N-1){
                 resize(array, N, cantidad_aumentar); 
+        }
         pac >> array[i].DNI >> coma >> array[i].nombre >> coma >> array[i].apellido >> coma 
         >> array[i].sexo >> coma >> array[i].natalicio >> coma >> array[i].estado >> coma >> array[i].id_os;
     }
+
 
     Contacto *ArrContacto = new Contacto[N];
     cont >> dummy >> coma >> dummy >> coma >> dummy >> coma >> dummy >> coma >> dummy; //leo el header de IRI_Contactos.csv
@@ -94,7 +98,9 @@ int main() {
     cont.close();
     med.close();
     pac.close();
-
+    
+    
+    //armamos el array con todos los datos
     int k;
     k=N;
     int j=0;
@@ -104,67 +110,56 @@ int main() {
             if (ArrConsultas[i].medico.matricula == ArrMed[j].matricula) 
             {
                 copiarConsMed(ArrConsultas, i, ArrMed, j);
-
             }
-
-
         }
+    }
 
     
 
     for (i=0 ;i<N ;i++){ //recorre pacientes
         for(j=0; j<k ;j++){ //recorre las otras listas
-                if(array[i].DNI == ArrContacto[j].DNI){
-                      copiarPacCont(array,i, ArrContacto,j);  
-
-                }
-
+               
                 if(array[i].DNI == ArrConsultas[j].DNI){
-                    copiarPacCons(array, i, ArrConsultas, j);
-                        
+                    copiarPacCons(array, i, ArrConsultas, j);    
                 }
 
-
-
+               // if(array[i].DNI == ArrContacto[j].DNI){
+                 //     copiarPacCont(array,i, ArrContacto,j);  
+              //  }
 
         }
-
-
     }
 
 
 
-    //armamos el array con todos los datos
-
   //hacer el calculo de los 10 años
   
   k=20;
+  int m = 20;
+  int p = 20;
   j=0;
+  int l=0;
+  int q=0;
+
   Paciente *archivados = new Paciente[k];
+  Paciente *activos = new Paciente[m];
+  Paciente *notFound = new Paciente[p];
 
     for(i=0; i<N; i++){
-      
-
         if(array[i].estado == "fallecido" || array[i].archivado == "archivado" ){//|| //dif tiempo > 10
           //archivar
               archivados[j].DNI = array[j].DNI;
               //repetir p todos los datos
-              j++;
-
-                
-
+              j++; 
         }
         
 
         else if(array[i].estado == "internado"){ 
-        // || tiene turno a futuro
+            // || tiene turno a futuro
              //mover a activo y retornar (idem)
         }
 
         else{ //los que tenemos que contactar
-                int j; //para las listas nuevas
-                int k;
-                int l;
                 int answer = Contactar();
                 
                 switch(answer){
@@ -190,5 +185,8 @@ int main() {
 
 
 
+
+
         
 }
+

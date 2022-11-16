@@ -1,6 +1,6 @@
 ## >>>>>>>>>>>>>>>
 ## >>>>>>>>>>>>>>>
-add_library(libreria dummy.cpp contactar.h contactar.cpp structs.h resize.h resize.cpp resizeCont.cpp resizeCons.cpp resizeMed.cpp copiarPacCont.h copiarPacCont.cpp copiarPacCons.h copiarPacCons.cpp "copiarConsMed.h" "copiarConsMed.cpp")
+add_library(libreria dummy.cpp contactar.h contactar.cpp structs.h resize.h resize.cpp resizeCont.cpp resizeCons.cpp resizeMed.cpp copiarPacCont.h copiarPacCont.cpp copiarPacCons.h copiarPacCons.cpp copiarConsMed.h copiarConsMed.cpp archivar.h archivar.cpp)
 ## <<<<<<<<<<<<<<<
 ## <<<<<<<<<<<<<<<
 
