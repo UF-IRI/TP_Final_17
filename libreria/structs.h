@@ -41,9 +41,9 @@ typedef struct {
     string sexo;
     time_t natalicio;
     string estado;
-    string id_os; //ver si poner solo el string o toda la estructura esta, ¿¿hace falta leer el numero??, no aporta info
+    string id_os;
     Contacto contacto;
-    Consultas UltimaConsulta; //ver como hacer para incluir todas --> Un array??
+    Consultas UltimaConsulta; 
     string archivado;
 } Paciente;
 

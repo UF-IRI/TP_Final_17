@@ -1,6 +1,9 @@
+#include <iostream>
 #include <string>
+#include <cstring>
 #include <fstream>
 #include <ctime>
+#include <regex>
 #include "iri.cpp"
 #include "resize.h"
 #include "contactar.h"
@@ -9,27 +12,30 @@
 #include "copiarConsMed.h"
 #include "archivar.h"
 
-
 using namespace std;
 
 //FALTA: 
         //Funcion update --> solo obra social
-        //Funcion Archivar!! --> agregar etiqueta
-        //Terminar de leer los archivos de consultas y medicos y armar la lista gral!
         //Excepciones (no hay contacto, etc.)!
-        //Borrar variablem mem dinamica: array, ArrContacto, ArrConsultas, 
+        //UNIT-TEST de: las funciones archivar.h, funciones copiar
+        //PODER ABRIR LOS ARCHIVOS
+        //Borrar variablem mem dinamica: array, archivados, activos, notFound
 
-//Variables mem estatica: i, aux, aux2, aux3, aux4, dummy, coma, 
+//Variables mem estatica: i, N, dummy, coma, j, k , l, m, p, q, cantidad_aumentar, 
 
 int main() {
 
     fstream cons,cont,med,pac;
-
-    cons.open(BASE_PATH+"TP_FINAL_17/data_files/input/IRI_Consultas.csv", ios::in);
-     if (!(cons.is_open()))
+    
+    cons.open(BASE_PATH+"data_files\\input\\IRI_Consultas.csv", ios::in);
+     if (!(cons.is_open())){
+      cout<<"no me pude abrir"<<endl;
             return -1;
+     }
+
+    cout<<"hola";
      
-    cont.open(BASE_PATH+"TP_FINAL_17/data_files/input/IRI_Contactos.csv", ios::in);
+    cont.open(BASE_PATH+"data_files/input/IRI_Contactos.csv", ios::in);
      if (!(cont.is_open()))
             return -1;
 
@@ -122,41 +128,55 @@ int main() {
                 if(array[i].DNI == ArrConsultas[j].DNI){
                     copiarPacCons(array, i, ArrConsultas, j);    
                 }
-
-               // if(array[i].DNI == ArrContacto[j].DNI){
-                 //     copiarPacCont(array,i, ArrContacto,j);  
-              //  }
+                
+                if(array[i].DNI == ArrContacto[j].DNI){
+                    copiarPacCont(array,i, ArrContacto,j);  
+                }
 
         }
     }
 
+    //borramos mem dinamica que ya no usamos
+    delete[] ArrContacto;
+    ArrContacto = NULL;
+
+    delete[] ArrContacto;
+    ArrContacto = NULL;
+
+    delete[] ArrMed;
+    ArrMed = NULL;
 
 
-  //hacer el calculo de los 10 años
-  
-  k=20;
-  int m = 20;
-  int p = 20;
-  j=0;
-  int l=0;
-  int q=0;
+    //Leemos toda la lista y ponemos etiquetas de archivado, activo o contactar
+    TengoQueArchivar(array, i, N);
+    
+    k=20; //archivo
+    j=0; //archivo
 
-  Paciente *archivados = new Paciente[k];
-  Paciente *activos = new Paciente[m];
-  Paciente *notFound = new Paciente[p];
+    int m = 20; //activo
+    int l=0; //activo
+
+    int p = 20; //not found
+    int q=0; //not found
+
+    Paciente *archivados = new Paciente[k];
+    Paciente *activos = new Paciente[m];
+    Paciente *notFound = new Paciente[p];
 
     for(i=0; i<N; i++){
-        if(array[i].estado == "fallecido" || array[i].archivado == "archivado" ){//|| //dif tiempo > 10
-          //archivar
-              archivados[j].DNI = array[j].DNI;
-              //repetir p todos los datos
-              j++; 
+        if(array[i].archivado == "ARCHIVADO" ){
+            if(i==k-1)
+                resize(archivados, k, cantidad_aumentar); 
+            archivar(archivados, j, array, i);
+            j++; 
         }
         
 
-        else if(array[i].estado == "internado"){ 
-            // || tiene turno a futuro
-             //mover a activo y retornar (idem)
+        else if(array[i].estado == "ACTIVO"){ 
+            if(i==m-1)
+                resize(activos, m, cantidad_aumentar); 
+            activo(activos, l, array, i);
+            l++; 
         }
 
         else{ //los que tenemos que contactar
@@ -164,27 +184,81 @@ int main() {
                 
                 switch(answer){
                         case 1: //muerto
-                        break;
+                            if(i==k-1)
+                                resize(archivados, k, cantidad_aumentar); 
+                            archivar(archivados, j, array, i);
+                            j++; 
+                            break;
 
                         case 2: //not back
-                        break;
+                            if(i==k-1)
+                                resize(archivados, k, cantidad_aumentar); 
+                            archivar(archivados, j, array, i);
+                            j++; 
+                            break;
 
                         case 3: //quiere volver
-                                //update, movemos al activo
-                        break;
+                            if(i==m-1)
+                                resize(activos, m, cantidad_aumentar); 
+                            activo(activos, l, array, i);
+                            l++; 
+                            break;
 
                         case 4: //not found
-                        break;
+                            if(i==p-1)
+                                resize(notFound, p, cantidad_aumentar); 
+                            notfound(notFound, q, array, i);
+                            q++;
+                            break;
 
                         default:
-                        break;
+                            cout<<"ERROR"<<endl;
+                            break;
                 }
         }
     }
 
+    //borramos mem dinamica que ya no usamos
+    delete[] array;
+    array = NULL;
 
 
+    //imprimir los archivos y borrar mems dinamica!
 
+
+    fstream arch,act,nf; //archivados, activos, not found
+    coma = ",";
+
+    arch.open(BASE_PATH+"data_files/output/IRI_Archivados.csv", ios::out);
+     if (!(arch.is_open()))
+            return -1;
+    
+    // imprimir el header
+    //hacer un for que imprima toda la lista
+
+    arch.close();
+
+
+    act.open(BASE_PATH+"data_files/output/IRI_Activos.csv", ios::out);
+     if (!(act.is_open()))
+            return -1;
+    
+    // imprimir el header
+    //hacer un for que imprima toda la lista
+
+    act.close();
+
+
+     nf.open(BASE_PATH+"data_files/output/IRI_NotFound.csv", ios::out);
+     if (!(nf.is_open()))
+            return -1;
+    
+    // imprimir el header
+    //hacer un for que imprima toda la lista
+
+    nf.close();
+
+    
 
 
         

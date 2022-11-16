@@ -6,6 +6,9 @@
 #include "structs.h"
 using namespace std;
 
-void archivar();
+void TengoQueArchivar(Paciente *&array, int i, int N);
+void archivar(Paciente *&archivados, int j, Paciente *&array, int i);
+void activo(Paciente *&activos, int l, Paciente *&array, int i);
+void notfound(Paciente *&notFound, int q, Paciente *&array, int i);
 
 #endif
