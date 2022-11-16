@@ -17,7 +17,7 @@ using namespace std;
 //FALTA: 
         //Funcion update --> solo obra social
         //Excepciones (no hay contacto, etc.)!
-        //UNIT-TEST de: las funciones archivar.h, funciones copiar
+        //UNIT-TEST de: las funciones archivar.h, funciones copiar, contactar
         //PODER ABRIR LOS ARCHIVOS
         //Borrar variablem mem dinamica: array, archivados, activos, notFound
 
@@ -120,7 +120,6 @@ int main() {
         }
     }
 
-    
 
     for (i=0 ;i<N ;i++){ //recorre pacientes
         for(j=0; j<k ;j++){ //recorre las otras listas
@@ -225,7 +224,6 @@ int main() {
 
     //imprimir los archivos y borrar mems dinamica!
 
-
     fstream arch,act,nf; //archivados, activos, not found
     coma = ",";
 
@@ -249,7 +247,7 @@ int main() {
     act.close();
 
 
-     nf.open(BASE_PATH+"data_files/output/IRI_NotFound.csv", ios::out);
+    nf.open(BASE_PATH+"data_files/output/IRI_NotFound.csv", ios::out);
      if (!(nf.is_open()))
             return -1;
     
@@ -257,9 +255,6 @@ int main() {
     //hacer un for que imprima toda la lista
 
     nf.close();
-
-    
-
 
         
 }
