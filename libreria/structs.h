@@ -4,11 +4,6 @@
 #include <ctime>
 using namespace std;
 
-typedef struct { 
-    string id_obs; // el que es un numero
-    string obra_social; // el que es palabra
-} ObraSocial;
-
 typedef struct{
     string matricula;
     string nombre;

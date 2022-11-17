@@ -5,6 +5,6 @@
 #include "structs.h"
 using namespace std;
 
-void copiarPacCons(Paciente*& array, int i, Consultas*& ArrConsultas, int j);
+void copiarPacCons(Paciente*& array, int i, Consultas*& ArrConsultas, int j, time_t max);
 
 #endif

@@ -3,13 +3,12 @@
 #include <cstring>
 #include <fstream>
 #include <ctime>
-#include <regex>
-#include "iri.cpp"
 #include "resize.h"
 #include "contactar.h"
 #include "copiarPacCont.h"
 #include "copiarPacCons.h"
 #include "copiarConsMed.h"
+#include "iri.cpp"
 #include "archivar.h"
 
 using namespace std;
@@ -18,17 +17,14 @@ using namespace std;
         //Funcion update --> solo obra social
         //Excepciones (no hay contacto, etc.)!
         //UNIT-TEST de: las funciones archivar.h, funciones copiar
-        //PODER ABRIR LOS ARCHIVOS
-        //Borrar variablem mem dinamica: archivados, activos, notFound
-        //imprimir los archivos
 
-//Variables mem estatica: i, N, dummy, coma, j, k , l, m, p, q, cantidad_aumentar, 
+//Variables mem estatica: i, N, dummy, coma, j, k , l, m, p, q, cantidad_aumentar, faltaDato
 
 int main() {
 
     fstream cons,cont,med,pac;
     
-    cons.open(BASE_PATH+"data_files/input/Consultas.csv", ios::in);
+    cons.open("Consultas.csv", ios::in);
      if (!(cons.is_open())){
       cout<<"no me pude abrir"<<endl;
             return -1;
@@ -36,20 +32,21 @@ int main() {
 
     cout<<"hola";
      
-    cont.open(BASE_PATH+"data_files/input/Contactos.csv", ios::in);
+    cont.open("Contactos.csv", ios::in);
      if (!(cont.is_open()))
             return -1;
+    cout<<"hola2";
 
-    med.open(BASE_PATH+"TP_FINAL_17/data_files/input/Medicos.csv", ios::in);
+    med.open("Medicos.csv", ios::in);
      if (!(med.is_open()))
             return -1;
+    cout<<"hola3";
 
-    pac.open(BASE_PATH+"TP_FINAL_17/data_files/input/Pacientes.csv", ios::in);
+    pac.open("Pacientes.csv", ios::in);
      if (!(pac.is_open()))
             return -1;
+    cout<<"hola4";
 
-
-    
     string dummy;
     string coma;
     int N=20;
@@ -97,7 +94,7 @@ int main() {
     while(med){//falta resize
         if(i==N-1)
                 resizeMed(ArrMed, N, cantidad_aumentar); 
-        med >> ArrMed[i].matricula >> coma >> ArrMed[i].nombre >> coma >> ArrMed[i].apellido >> coma >> ArrMed[i].telefono >> coma >> ArrMed[i].especialidad >> coma >>  ArrMed[i].activo;
+        med >> ArrMed[i].matricula >> coma >> ArrMed[i].nombre >> coma >> ArrMed[i].apellido >> coma >> ArrMed[i].telefono >> coma >> ArrMed[i].especialidad >> coma >> ArrMed[i].activo;
         i++;
     }
 
@@ -121,16 +118,20 @@ int main() {
         }
     }
 
+    time_t max;
+    max = 01/01/1981;
 
     for (i=0 ;i<N ;i++){ //recorre pacientes
         for(j=0; j<k ;j++){ //recorre las otras listas
                
                 if(array[i].DNI == ArrConsultas[j].DNI){
-                    copiarPacCons(array, i, ArrConsultas, j);    
+                    copiarPacCons(array, i, ArrConsultas, j, max);
+                    bool faltaDato = true;    
                 }
                 
-                if(array[i].DNI == ArrContacto[j].DNI){
-                    copiarPacCont(array,i, ArrContacto,j);  
+               if(array[i].DNI == ArrContacto[j].DNI){
+                    copiarPacCont(array,i, ArrContacto,j); 
+                    bool faltaDato = true; 
                 }
 
         }
@@ -232,31 +233,48 @@ int main() {
      if (!(arch.is_open()))
             return -1;
     
-    // imprimir el header
-    //hacer un for que imprima toda la lista
+    arch << "DNI" << coma << "Nombre" << coma << "Apellido" << coma << "Sexo" << coma << "Natalicio" << coma << "Estado" << coma << "Obra_Social";
+   
+   j=0;
+    while(j<k){
+         arch << archivados[j].DNI << coma << archivados[j].nombre << coma << archivados[j].apellido << coma << archivados[j].sexo << coma << archivados[j].natalicio << coma << archivados[j].estado << coma << archivados[j].id_os << endl;
+        j++;    
+    }
 
     arch.close();
+    delete[] archivados;
+    archivados = NULL;
 
 
     act.open(BASE_PATH+"data_files/output/IRI_Activos.csv", ios::app);
      if (!(act.is_open()))
             return -1;
     
-    // imprimir el header
-    //hacer un for que imprima toda la lista
+    arch << "DNI" << coma << "Nombre" << coma << "Apellido" << coma << "Sexo" << coma << "Natalicio" << coma << "Estado" << coma << "Obra_Social";
+    l=0;
+    while(l<m){
+       act << activos[l].DNI << coma << activos[l].nombre << coma << activos[l].apellido << coma << activos[l].sexo << coma << activos[l].natalicio << coma << activos[l].estado << coma << activos[l].id_os << endl;
+       l++;  
+    }
 
     act.close();
-
+    delete[] activos;
+    activos = NULL;
 
     nf.open(BASE_PATH+"data_files/output/IRI_NotFound.csv", ios::app);
      if (!(nf.is_open()))
             return -1;
     
-    // imprimir el header
-    //hacer un for que imprima toda la lista
+    arch << "DNI" << coma << "Nombre" << coma << "Apellido" << coma << "Sexo" << coma << "Natalicio" << coma << "Estado" << coma << "Obra_Social";
+    q=0;
+    while(q<p){
+       nf << notFound[q].DNI << coma << notFound[q].nombre << coma << notFound[q].apellido << coma << notFound[q].sexo << coma << notFound[q].natalicio << coma << notFound[q].estado << coma << notFound[q].id_os << endl;
+       q++;  
+    }
 
     nf.close();
+    delete[] notFound;
+    notFound = NULL;
 
-        
 }
 
