@@ -17,9 +17,10 @@ using namespace std;
 //FALTA: 
         //Funcion update --> solo obra social
         //Excepciones (no hay contacto, etc.)!
-        //UNIT-TEST de: las funciones archivar.h, funciones copiar, contactar
+        //UNIT-TEST de: las funciones archivar.h, funciones copiar
         //PODER ABRIR LOS ARCHIVOS
-        //Borrar variablem mem dinamica: array, archivados, activos, notFound
+        //Borrar variablem mem dinamica: archivados, activos, notFound
+        //imprimir los archivos
 
 //Variables mem estatica: i, N, dummy, coma, j, k , l, m, p, q, cantidad_aumentar, 
 
@@ -27,7 +28,7 @@ int main() {
 
     fstream cons,cont,med,pac;
     
-    cons.open(BASE_PATH+"data_files\\input\\IRI_Consultas.csv", ios::in);
+    cons.open(BASE_PATH+"data_files/input/Consultas.csv", ios::in);
      if (!(cons.is_open())){
       cout<<"no me pude abrir"<<endl;
             return -1;
@@ -35,15 +36,15 @@ int main() {
 
     cout<<"hola";
      
-    cont.open(BASE_PATH+"data_files/input/IRI_Contactos.csv", ios::in);
+    cont.open(BASE_PATH+"data_files/input/Contactos.csv", ios::in);
      if (!(cont.is_open()))
             return -1;
 
-    med.open(BASE_PATH+"TP_FINAL_17/data_files/input/IRI_Medicos.csv", ios::in);
+    med.open(BASE_PATH+"TP_FINAL_17/data_files/input/Medicos.csv", ios::in);
      if (!(med.is_open()))
             return -1;
 
-    pac.open(BASE_PATH+"TP_FINAL_17/data_files/input/IRI_Pacientes.csv", ios::in);
+    pac.open(BASE_PATH+"TP_FINAL_17/data_files/input/Pacientes.csv", ios::in);
      if (!(pac.is_open()))
             return -1;
 
@@ -227,7 +228,7 @@ int main() {
     fstream arch,act,nf; //archivados, activos, not found
     coma = ",";
 
-    arch.open(BASE_PATH+"data_files/output/IRI_Archivados.csv", ios::out);
+    arch.open(BASE_PATH+"data_files/output/IRI_Archivados.csv", ios::app);
      if (!(arch.is_open()))
             return -1;
     
@@ -237,7 +238,7 @@ int main() {
     arch.close();
 
 
-    act.open(BASE_PATH+"data_files/output/IRI_Activos.csv", ios::out);
+    act.open(BASE_PATH+"data_files/output/IRI_Activos.csv", ios::app);
      if (!(act.is_open()))
             return -1;
     
@@ -247,7 +248,7 @@ int main() {
     act.close();
 
 
-    nf.open(BASE_PATH+"data_files/output/IRI_NotFound.csv", ios::out);
+    nf.open(BASE_PATH+"data_files/output/IRI_NotFound.csv", ios::app);
      if (!(nf.is_open()))
             return -1;
     
