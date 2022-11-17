@@ -13,12 +13,7 @@
 
 using namespace std;
 
-//FALTA: 
-        //Funcion update --> solo obra social
-        //Excepciones (no hay contacto, etc.)!
-        //UNIT-TEST de: las funciones archivar.h, funciones copiar
 
-//Variables mem estatica: i, N, dummy, coma, j, k , l, m, p, q, cantidad_aumentar, faltaDato
 
 int main() {
 
@@ -35,6 +30,7 @@ int main() {
     cont.open("Contactos.csv", ios::in);
      if (!(cont.is_open()))
             return -1;
+
     cout<<"hola2";
 
     med.open("Medicos.csv", ios::in);
