@@ -14,11 +14,11 @@ void TengoQueArchivar(Paciente *&array, int i, int N){
     for(i=0; i<N; i++){
        diferencia = difftime(now,fecha); //calculo de los años
        
-       if(array[i].estado == "fallecido" || diferencia > 10){ //si esta muerto o pasaron mas de 10 años
+       if(array[i].estado == "fallecido" || diferencia >= 10){ //si esta muerto o pasaron mas de 10 años
             array[i].archivado = "ARCHIVADO";
        }
 
-       else if (array[i].estado == "internado" || fecha > now){ //si esta internado o tiene un turno a futuro
+       else if (array[i].estado == "internado" || fecha >= now){ //si esta internado o tiene un turno a futuro
             array[i].archivado = "ACTIVO";
        }
 

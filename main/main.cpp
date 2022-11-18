@@ -162,8 +162,8 @@ int main() {
     delete[] ArrContacto;
     ArrContacto = NULL;
 
-    delete[] ArrContacto;
-    ArrContacto = NULL;
+    delete[] ArrConsultas;
+    ArrConsultas = NULL;
 
     delete[] ArrMed;
     ArrMed = NULL;
@@ -261,7 +261,7 @@ int main() {
     array = NULL;
 
 
-    //imprimir los archivos y borrar mems dinamica!
+    //imprimir los archivos
 
     fstream arch,act,nf; //archivados, activos, not found
     coma = ",";

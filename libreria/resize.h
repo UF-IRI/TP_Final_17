@@ -2,6 +2,7 @@
 #define RESIZE_H
 #include <string>
 #include <iostream>
+#include <ctime>
 #include "structs.h"
 using namespace std;
 

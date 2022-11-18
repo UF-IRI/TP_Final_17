@@ -11,7 +11,7 @@ namespace Casos_Base {
         array[0].nombre = "Dagmar";
         array[0].apellido = "Benedict";
         array[0].sexo = "F";
-        array[0].natalicio = 1/2/1959;
+        array[0].natalicio = "1/2/1959";
         array[0].estado = "fallecido";
         array[0].id_os = "Italiano";
 
@@ -19,7 +19,7 @@ namespace Casos_Base {
         array[1].nombre = "Freeman";
         array[1].apellido = "Willbond";
         array[1].sexo = "M";
-        array[1].natalicio = 9/22/2010;
+        array[1].natalicio = "9/22/2010";
         array[1].estado = "internado";
         array[1].id_os = "Espanyol";
 
@@ -27,7 +27,7 @@ namespace Casos_Base {
         array[2].nombre = "Laurene";
         array[2].apellido = "Rumsey";
         array[2].sexo = "F";
-        array[2].natalicio = 2/27/1951;
+        array[2].natalicio = "2/27/1951";
         array[2].estado = "n/c";
         array[2].id_os = "OSDE";
 
@@ -40,7 +40,7 @@ namespace Casos_Base {
         test[0].nombre = "Dagmar";
         test[0].apellido = "Benedict";
         test[0].sexo = "F";
-        test[0].natalicio = 1/2/1959;
+        test[0].natalicio = "1/2/1959";
         test[0].estado = "fallecido";
         test[0].id_os = "Italiano";
 
@@ -48,7 +48,7 @@ namespace Casos_Base {
         test[1].nombre = "Freeman";
         test[1].apellido = "Willbond";
         test[1].sexo = "M";
-        test[1].natalicio = 9/22/2010;
+        test[1].natalicio = "9/22/2010";
         test[1].estado = "internado";
         test[1].id_os = "Espanyol";
 
@@ -56,7 +56,7 @@ namespace Casos_Base {
         test[2].nombre = "Laurene";
         test[2].apellido = "Rumsey";
         test[2].sexo = "F";
-        test[2].natalicio = 2/27/1951;
+        test[2].natalicio = "2/27/1951";
         test[2].estado = "n/c";
         test[2].id_os = "OSDE";   
 
@@ -131,20 +131,32 @@ namespace Casos_Base {
         Consultas array[3];
 
         array[0].DNI = "432584544";
-        array[0].fecha_solicitado = 01/11/2001;
-        array[0].fecha_turno = 19/12/2001;
+        array[0].fecha_solicitado.tm_mday = 01;
+        array[0].fecha_solicitado.tm_mon=11;
+        array[0].fecha_solicitado.tm_year=2001;
+        array[0].fecha_turno.tm_mday = 19;
+        array[0].fecha_turno.tm_mon = 12;
+        array[0].fecha_turno.tm_year = 2001;
         array[0].presento = true;
         array[0].medico.matricula = "00-334-0838";
 
         array[1].DNI = "867584849";
-        array[1].fecha_solicitado = 26/01/2009;
-        array[1].fecha_turno = 20/02/2009;
+        array[1].fecha_solicitado.tm_mday = 26;
+        array[1].fecha_solicitado.tm_mon = 01;
+        array[1].fecha_solicitado.tm_year = 2009;
+        array[1].fecha_turno.tm_mday = 20;
+        array[1].fecha_turno.tm_mon = 02;
+        array[1].fecha_turno.tm_year = 2009;
         array[1].presento = true;
         array[1].medico.matricula = "23-279-3287";
        
         array[2].DNI = "692767686";
-        array[2].fecha_solicitado = 16/06/1993;
-        array[2].fecha_turno = 14/07/1993;
+        array[2].fecha_solicitado.tm_mday = 16;
+        array[2].fecha_solicitado.tm_mon = 06;
+        array[2].fecha_solicitado.tm_year = 1993;
+        array[2].fecha_turno.tm_mday = 14;
+        array[2].fecha_turno.tm_mon = 07;
+        array[2].fecha_turno.tm_year = 1993;
         array[2].presento = false;
         array[2].medico.matricula = "12-340-2259";
 
@@ -154,29 +166,46 @@ namespace Casos_Base {
         resizeCons(test, N, 2);
 
         test[0].DNI = "432584544";
-        test[0].fecha_solicitado = 01/11/2001;
-        test[0].fecha_turno = 19/12/2001;
+        test[0].fecha_solicitado.tm_mday = 01;
+        test[0].fecha_solicitado.tm_mon=11;
+        test[0].fecha_solicitado.tm_year=2001;
+        test[0].fecha_turno.tm_mday = 19;
+        test[0].fecha_turno.tm_mon = 12;
+        test[0].fecha_turno.tm_year = 2001;
         test[0].presento = true;
         test[0].medico.matricula = "00-334-0838";
 
         test[1].DNI = "867584849";
-        test[1].fecha_solicitado = 26/01/2009;
-        test[1].fecha_turno = 20/02/2009;
+        test[1].fecha_solicitado.tm_mday = 26;
+        test[1].fecha_solicitado.tm_mon = 01;
+        test[1].fecha_solicitado.tm_year = 2009;
+        test[1].fecha_turno.tm_mday = 20;
+        test[1].fecha_turno.tm_mon = 02;
+        test[1].fecha_turno.tm_year = 2009;
         test[1].presento = true;
         test[1].medico.matricula = "23-279-3287";
        
         test[2].DNI = "692767686";
-        test[2].fecha_solicitado = 16/06/1993;
-        test[2].fecha_turno = 14/07/1993;
+        test[2].fecha_solicitado.tm_mday = 16;
+        test[2].fecha_solicitado.tm_mon = 06;
+        test[2].fecha_solicitado.tm_year = 1993;
+        test[2].fecha_turno.tm_mday = 14;
+        test[2].fecha_turno.tm_mon = 07;
+        test[2].fecha_turno.tm_year = 1993;
         test[2].presento = false;
         test[2].medico.matricula = "12-340-2259";
 
         for(int i = 0; i < 3; i++){
             EXPECT_EQ(array[i].DNI, test[i].DNI);    
-            EXPECT_EQ(array[i].fecha_solicitado, test[i].fecha_solicitado);    
-            EXPECT_EQ(array[i].fecha_turno, test[i].fecha_turno);    
+            EXPECT_EQ(array[i].fecha_solicitado.tm_mday, test[i].fecha_solicitado.tm_mday);   
+            EXPECT_EQ(array[i].fecha_solicitado.tm_mon, test[i].fecha_solicitado.tm_mon); 
+            EXPECT_EQ(array[i].fecha_solicitado.tm_year, test[i].fecha_solicitado.tm_year);  
+            EXPECT_EQ(array[i].fecha_turno.tm_mday, test[i].fecha_turno.tm_mday);    
+            EXPECT_EQ(array[i].fecha_turno.tm_mon, test[i].fecha_turno.tm_mon);    
+            EXPECT_EQ(array[i].fecha_turno.tm_year, test[i].fecha_turno.tm_year);    
             EXPECT_EQ(array[i].presento, test[i].presento);    
-            EXPECT_EQ(array[i].medico.matricula, test[i].medico.matricula);        
+            EXPECT_EQ(array[i].medico.matricula, test[i].medico.matricula);
+                 
         }
 
 	
