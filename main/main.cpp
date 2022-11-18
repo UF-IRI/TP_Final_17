@@ -24,24 +24,21 @@ int main() {
       cout<<"no me pude abrir"<<endl;
             return -1;
      }
-
-    cout<<"hola";
      
     cont.open("Contactos.csv", ios::in);
      if (!(cont.is_open()))
             return -1;
 
-    cout<<"hola2";
 
     med.open("Medicos.csv", ios::in);
      if (!(med.is_open()))
             return -1;
-    cout<<"hola3";
+
 
     pac.open("Pacientes.csv", ios::in);
      if (!(pac.is_open()))
             return -1;
-    cout<<"hola4";
+ 
 
     string dummy;
     string coma;
@@ -97,7 +94,7 @@ int main() {
     med >> dummy >> coma >> dummy >> coma >> dummy >> coma >> dummy >> coma >> dummy >> coma >> dummy; //leo el header de IRI_Medicos.csv
 
     i=0;
-    while(med){//falta resize
+    while(med){
         if(i==N-1)
                 resizeMed(ArrMed, N, cantidad_aumentar); 
         med >> ArrMed[i].matricula >> coma >> ArrMed[i].nombre >> coma >> ArrMed[i].apellido >> coma >> ArrMed[i].telefono >> coma >> ArrMed[i].especialidad >> coma >> ArrMed[i].activo;
@@ -224,29 +221,29 @@ int main() {
                         case 1: //muerto
                             if(i==k-1)
                                 resize(archivados, k, cantidad_aumentar); 
-                                archivar(archivados, j, array, i);
-                                j++; 
+                            archivar(archivados, j, array, i);
+                            j++; 
                             break;
 
                         case 2: //not back
                             if(i==k-1)
                                 resize(archivados, k, cantidad_aumentar); 
-                                archivar(archivados, j, array, i);
-                                j++; 
+                            archivar(archivados, j, array, i);
+                            j++; 
                             break;
 
                         case 3: //quiere volver
                             if(i==m-1)
                                 resize(activos, m, cantidad_aumentar); 
-                                activo(activos, l, array, i);
-                                l++; 
+                            activo(activos, l, array, i);
+                            l++; 
                             break;
 
                         case 4: //not found
                             if(i==p-1)
                                 resize(notFound, p, cantidad_aumentar); 
-                                notfound(notFound, q, array, i);
-                                q++;
+                            notfound(notFound, q, array, i);
+                            q++;
                             break;
 
                         default:
