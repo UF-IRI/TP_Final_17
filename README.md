@@ -1,13 +1,13 @@
-# TP Final - Grupo `XX`
+# TP Final - Grupo `17`
 ### Consigna
     Consigna del TP Final
 ### Descripción
-    Descripción del proyecto
+    TP Final :')
 ### Integrantes
-- Integrante 1
-- Integrante 2
-- Integrante 3
-- Integrante 4
+- Sol Fiterman
+- Valentina Gayoso
+- Camila Martín
+- Stephania Salvi
 ### Compilaciones
 [![Ubuntu](https://github.com/UF-IRI/TP_Final/actions/workflows/ubuntu.yml/badge.svg)](https://github.com/UF-IRI/TP_Final/actions/workflows/ubuntu.yml)
 ### Unit Tests
