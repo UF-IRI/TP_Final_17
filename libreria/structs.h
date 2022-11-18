@@ -34,7 +34,7 @@ typedef struct {
     string nombre;
     string apellido;
     string sexo;
-    time_t natalicio;
+    string natalicio;
     string estado;
     string id_os;
     Contacto contacto;
