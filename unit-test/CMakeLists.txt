@@ -21,7 +21,7 @@ add_subdirectory(${CMAKE_CURRENT_BINARY_DIR}/googletest-src ${CMAKE_CURRENT_BINA
 
 ## >>>>>>>>>>>>>>>
 ## >>>>>>>>>>>>>>>
-add_executable(unit-test main_test.cpp casos_base.cpp TestResize.cpp TestContactar.cpp)
+add_executable(unit-test main_test.cpp casos_base.cpp TestResize.cpp TestContactar.cpp TestRandomObS.cpp)
 ## <<<<<<<<<<<<<<<
 ## <<<<<<<<<<<<<<<
 

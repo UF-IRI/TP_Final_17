@@ -10,9 +10,9 @@
 #include "copiarConsMed.h"
 #include "iri.cpp"
 #include "archivar.h"
+#include "randomObS.h"
 
 using namespace std;
-
 
 
 int main() {
@@ -50,6 +50,9 @@ int main() {
     int cantidad_aumentar = 5;
 
     Paciente *array = new Paciente[N];
+    if(array==nullptr)
+        return -1;
+
     pac >> dummy >> coma >> dummy >> coma >> dummy >> coma >> dummy >> coma >> dummy >> coma >> dummy >> coma >> dummy; //leo el header de Pacientes.csv
 
     while(pac){
@@ -62,6 +65,8 @@ int main() {
 
 
     Contacto *ArrContacto = new Contacto[N];
+    if(ArrContacto==nullptr)
+        return -1;
     cont >> dummy >> coma >> dummy >> coma >> dummy >> coma >> dummy >> coma >> dummy; //leo el header de IRI_Contactos.csv
 
     i=0;
@@ -73,6 +78,9 @@ int main() {
     }
 
     Consultas *ArrConsultas = new Consultas[N];
+    if(ArrConsultas==nullptr)
+        return -1;
+
     cons >> dummy >> coma >> dummy >> coma >> dummy >> coma >> dummy >> coma >> dummy; //leo el header de IRI_Consultas.csv
 
     i=0;
@@ -84,6 +92,8 @@ int main() {
     }
     
     Medico *ArrMed = new Medico[N];
+    if(ArrMed==nullptr)
+        return -1;
     med >> dummy >> coma >> dummy >> coma >> dummy >> coma >> dummy >> coma >> dummy >> coma >> dummy; //leo el header de IRI_Medicos.csv
 
     i=0;
@@ -105,11 +115,17 @@ int main() {
     k=N;
     int j=0;
 
+    bool ConsMed[N]; //flag que indica que se cargo el dato
+    for (i = 0; i < N; i++) {
+        ConsMed[i]=false;
+    }
+
     for (i = 0; i < N; i++) { //recorre Consulta
         for (j = 0; j < k; j++) { //recorre medicos
             if (ArrConsultas[i].medico.matricula == ArrMed[j].matricula) 
             {
                 copiarConsMed(ArrConsultas, i, ArrMed, j);
+                ConsMed[i]=true;
             }
         }
     }
@@ -117,19 +133,28 @@ int main() {
     time_t max;
     max = 01/01/1981;
 
+    bool PacCons[N]; //flag que indica que se cargo el dato
+    for (i = 0; i < N; i++) {
+        PacCons[i]=false;
+    }
+
+    bool PacCont[N]; //flag que indica que se cargo el dato
+    for (i = 0; i < N; i++) {
+        PacCont[i]=false;
+    }
+
     for (i=0 ;i<N ;i++){ //recorre pacientes
         for(j=0; j<k ;j++){ //recorre las otras listas
                
                 if(array[i].DNI == ArrConsultas[j].DNI){
                     copiarPacCons(array, i, ArrConsultas, j, max);
-                    bool faltaDato = true;    
+                    PacCons[i]=true;   
                 }
                 
                if(array[i].DNI == ArrContacto[j].DNI){
                     copiarPacCont(array,i, ArrContacto,j); 
-                    bool faltaDato = true; 
+                    PacCont[i]=true; 
                 }
-
         }
     }
 
@@ -142,7 +167,6 @@ int main() {
 
     delete[] ArrMed;
     ArrMed = NULL;
-
 
     //Leemos toda la lista y ponemos etiquetas de archivado, activo o contactar
     TengoQueArchivar(array, i, N);
@@ -157,55 +181,72 @@ int main() {
     int q=0; //not found
 
     Paciente *archivados = new Paciente[k];
-    Paciente *activos = new Paciente[m];
-    Paciente *notFound = new Paciente[p];
+    if(archivados==nullptr)
+        return -1;
 
+    Paciente *activos = new Paciente[m];
+    if(activos==nullptr)
+        return -1;
+
+    Paciente *notFound = new Paciente[p];
+    if(notFound==nullptr)
+        return -1;
+
+    string aux_os;
     for(i=0; i<N; i++){
-        if(array[i].archivado == "ARCHIVADO" ){
+        if(array[i].archivado == "ARCHIVADO" && PacCons[i] == true && PacCont[i] == true && ConsMed[i] == true){
             if(i==k-1)
                 resize(archivados, k, cantidad_aumentar); 
             archivar(archivados, j, array, i);
             j++; 
         }
-        
 
-        else if(array[i].estado == "ACTIVO"){ 
+        else if(array[i].estado == "ACTIVO" && PacCons[i] == true && PacCont[i] == true && ConsMed[i] == true){ 
             if(i==m-1)
                 resize(activos, m, cantidad_aumentar); 
+        
+            bool respuesta = randomObS();
+            if (respuesta == true){
+                cout<<"ingrese su nueva obra social: ";
+                cin>>aux_os;
+                array[i].id_os = aux_os;
+            }
+
             activo(activos, l, array, i);
             l++; 
+
         }
 
-        else{ //los que tenemos que contactar
+        else if (array[i].estado == "CONTACTAR" && PacCons[i] == true && PacCont[i] == true && ConsMed[i] == true){ //los que tenemos que contactar
                 int answer = Contactar();
                 
                 switch(answer){
                         case 1: //muerto
                             if(i==k-1)
                                 resize(archivados, k, cantidad_aumentar); 
-                            archivar(archivados, j, array, i);
-                            j++; 
+                                archivar(archivados, j, array, i);
+                                j++; 
                             break;
 
                         case 2: //not back
                             if(i==k-1)
                                 resize(archivados, k, cantidad_aumentar); 
-                            archivar(archivados, j, array, i);
-                            j++; 
+                                archivar(archivados, j, array, i);
+                                j++; 
                             break;
 
                         case 3: //quiere volver
                             if(i==m-1)
                                 resize(activos, m, cantidad_aumentar); 
-                            activo(activos, l, array, i);
-                            l++; 
+                                activo(activos, l, array, i);
+                                l++; 
                             break;
 
                         case 4: //not found
                             if(i==p-1)
                                 resize(notFound, p, cantidad_aumentar); 
-                            notfound(notFound, q, array, i);
-                            q++;
+                                notfound(notFound, q, array, i);
+                                q++;
                             break;
 
                         default:

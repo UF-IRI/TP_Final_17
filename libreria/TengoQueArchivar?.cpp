@@ -21,6 +21,8 @@ void TengoQueArchivar(Paciente *&array, int i, int N){
              array[i].archivado = "CONTACTAR";
 
     }
+    
+    return;
 
 
 }
