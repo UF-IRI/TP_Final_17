@@ -15,8 +15,8 @@ typedef struct{
 
 typedef struct {
     string DNI;
-    time_t fecha_solicitado;
-    time_t fecha_turno;
+    tm fecha_solicitado;
+    tm fecha_turno;
     bool presento;
     Medico medico; //conectado a traves de matricula 
 } Consultas;

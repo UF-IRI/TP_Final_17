@@ -12,8 +12,12 @@ void activo(Paciente *&activos, int l, Paciente *&array, int i){
     activos[l].contacto.celular = array[i].contacto.celular;
     activos[l].contacto.direccion = array[i].contacto.direccion;
     activos[l].contacto.mail = array[i].contacto.mail;
-    activos[l].UltimaConsulta.fecha_solicitado = array[i].UltimaConsulta.fecha_solicitado;
-    activos[l].UltimaConsulta.fecha_turno = array[i].UltimaConsulta.fecha_turno;
+    activos[l].UltimaConsulta.fecha_solicitado.tm_mday = array[i].UltimaConsulta.fecha_solicitado.tm_mday;
+    activos[l].UltimaConsulta.fecha_solicitado.tm_mon = array[i].UltimaConsulta.fecha_solicitado.tm_mon;
+    activos[l].UltimaConsulta.fecha_solicitado.tm_year = array[i].UltimaConsulta.fecha_solicitado.tm_year;
+    activos[l].UltimaConsulta.fecha_turno.tm_mday = array[i].UltimaConsulta.fecha_turno.tm_mday;
+    activos[l].UltimaConsulta.fecha_turno.tm_mon = array[i].UltimaConsulta.fecha_turno.tm_mon;
+    activos[l].UltimaConsulta.fecha_turno.tm_year = array[i].UltimaConsulta.fecha_turno.tm_year;
     activos[l].UltimaConsulta.presento = array[i].UltimaConsulta.presento;
     activos[l].UltimaConsulta.medico.matricula = array[i].UltimaConsulta.medico.matricula;
     activos[l].UltimaConsulta.medico.nombre = array[i].UltimaConsulta.medico.nombre;

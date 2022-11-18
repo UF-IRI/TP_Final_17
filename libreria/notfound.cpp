@@ -12,8 +12,12 @@ void notfound(Paciente *&notFound, int q, Paciente *&array, int i){
     notFound[q].contacto.celular = array[i].contacto.celular;
     notFound[q].contacto.direccion = array[i].contacto.direccion;
     notFound[q].contacto.mail = array[i].contacto.mail;
-    notFound[q].UltimaConsulta.fecha_solicitado = array[i].UltimaConsulta.fecha_solicitado;
-    notFound[q].UltimaConsulta.fecha_turno = array[i].UltimaConsulta.fecha_turno;
+    notFound[q].UltimaConsulta.fecha_solicitado.tm_mday = array[i].UltimaConsulta.fecha_solicitado.tm_mday;
+    notFound[q].UltimaConsulta.fecha_solicitado.tm_mon = array[i].UltimaConsulta.fecha_solicitado.tm_mon;
+    notFound[q].UltimaConsulta.fecha_solicitado.tm_year = array[i].UltimaConsulta.fecha_solicitado.tm_year;
+    notFound[q].UltimaConsulta.fecha_turno.tm_mday = array[i].UltimaConsulta.fecha_turno.tm_mday;
+    notFound[q].UltimaConsulta.fecha_turno.tm_mon = array[i].UltimaConsulta.fecha_turno.tm_mon;
+    notFound[q].UltimaConsulta.fecha_turno.tm_year = array[i].UltimaConsulta.fecha_turno.tm_year;
     notFound[q].UltimaConsulta.presento = array[i].UltimaConsulta.presento;
     notFound[q].UltimaConsulta.medico.matricula = array[i].UltimaConsulta.medico.matricula;
     notFound[q].UltimaConsulta.medico.nombre = array[i].UltimaConsulta.medico.nombre;

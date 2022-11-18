@@ -87,7 +87,7 @@ int main() {
     while(cons){
          if(i==N-1)
                 resizeCons(ArrConsultas, N, cantidad_aumentar); 
-        cons >> ArrConsultas[i].DNI >> coma >> ArrConsultas[i].fecha_solicitado >> coma >> ArrConsultas[i].fecha_turno >> coma >> ArrConsultas[i].presento >> coma >> ArrConsultas[i].medico.matricula;
+        cons >> ArrConsultas[i].DNI >> coma >> ArrConsultas[i].fecha_solicitado.tm_mday >> coma >> ArrConsultas[i].fecha_solicitado.tm_mon >> coma >> ArrConsultas[i].fecha_solicitado.tm_year >> coma >> ArrConsultas[i].fecha_turno.tm_mday >> coma >> ArrConsultas[i].fecha_turno.tm_mon >> coma >> ArrConsultas[i].fecha_turno.tm_year >> coma >> ArrConsultas[i].presento >> coma >> ArrConsultas[i].medico.matricula;
         i++;
     }
     
@@ -130,9 +130,7 @@ int main() {
         }
     }
 
-    time_t max;
-    max = 01/01/1981;
-
+    
     bool PacCons[N]; //flag que indica que se cargo el dato
     for (i = 0; i < N; i++) {
         PacCons[i]=false;
@@ -142,6 +140,8 @@ int main() {
     for (i = 0; i < N; i++) {
         PacCont[i]=false;
     }
+
+    double max = 0;
 
     for (i=0 ;i<N ;i++){ //recorre pacientes
         for(j=0; j<k ;j++){ //recorre las otras listas
